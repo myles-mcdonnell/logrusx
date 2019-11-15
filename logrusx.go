@@ -100,9 +100,7 @@ func Error(label string) Entry {
 	return entryFactory.MakeEntry(ERROR, label)()
 }
 
-func Init(level Level, out io.Writer, pretty bool) {
-	log.SetFormatter(&JSONFormatter{Indent: pretty})
-
+func Init(level Level, out io.Writer, formatter log.Formatter, entryFactory LogEntryFactory) {
 	// Output to stdout instead of the default stderr
 	// Can be any io.Writer, see below for File example
 	log.SetOutput(out)
@@ -126,7 +124,7 @@ func Init(level Level, out io.Writer, pretty bool) {
 
 	traceLevels = LevelPtr(DefaultStackTraceLogLevel)
 
-	entryFactory = NewLogEntryFactory("g2r-api")
+	entryFactory = entryFactory
 }
 
 func GetLogLevel() Level {
