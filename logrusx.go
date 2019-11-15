@@ -100,7 +100,7 @@ func Error(label string) Entry {
 	return entryFactory.MakeEntry(ERROR, label)()
 }
 
-func Init(level Level, out io.Writer, formatter log.Formatter, entryFactory LogEntryFactory) {
+func Init(level Level, out io.Writer, formatter log.Formatter, factory LogEntryFactory) {
 	// Output to stdout instead of the default stderr
 	// Can be any io.Writer, see below for File example
 	log.SetOutput(out)
@@ -124,7 +124,7 @@ func Init(level Level, out io.Writer, formatter log.Formatter, entryFactory LogE
 
 	traceLevels = LevelPtr(DefaultStackTraceLogLevel)
 
-	entryFactory = entryFactory
+	entryFactory = factory
 }
 
 func GetLogLevel() Level {
