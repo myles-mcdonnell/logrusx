@@ -76,24 +76,24 @@ type (
 	ContextHandler func(context.Context, Entry)
 )
 
-func Infof(label string, args ...string) Entry {
-	return entryFactory.MakeEntry(DEBUG, fmt.Sprintf(label, args))()
+func Infof(label string, args ...interface{}) Entry {
+	return entryFactory.MakeEntry(DEBUG, fmt.Sprintf(label, args...))()
 }
 
 func Info(label string) Entry {
 	return entryFactory.MakeEntry(DEBUG, label)()
 }
 
-func Debugf(label string, args ...string) Entry {
-	return entryFactory.MakeEntry(DEBUG, fmt.Sprintf(label, args))()
+func Debugf(label string, args ...interface{}) Entry {
+	return entryFactory.MakeEntry(DEBUG, fmt.Sprintf(label, args...))()
 }
 
 func Debug(label string) Entry {
 	return entryFactory.MakeEntry(DEBUG, label)()
 }
 
-func Errorf(label string, args ...string) Entry {
-	return entryFactory.MakeEntry(ERROR, fmt.Sprintf(label, args))()
+func Errorf(label string, args ...interface{}) Entry {
+	return entryFactory.MakeEntry(ERROR, fmt.Sprintf(label, args...))()
 }
 
 func Error(label string) Entry {
