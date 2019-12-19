@@ -104,6 +104,7 @@ func Init(level Level, out io.Writer, formatter log.Formatter, factory LogEntryF
 	// Output to stdout instead of the default stderr
 	// Can be any io.Writer, see below for File example
 	log.SetOutput(out)
+	log.SetFormatter(formatter)
 
 	var err error
 	hostname, err = os.Hostname()
