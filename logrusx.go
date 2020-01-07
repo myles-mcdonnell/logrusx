@@ -77,11 +77,11 @@ type (
 )
 
 func Infof(label string, args ...interface{}) Entry {
-	return entryFactory.MakeEntry(DEBUG, fmt.Sprintf(label, args...))()
+	return entryFactory.MakeEntry(INFO, fmt.Sprintf(label, args...))()
 }
 
 func Info(label string) Entry {
-	return entryFactory.MakeEntry(DEBUG, label)()
+	return entryFactory.MakeEntry(INFO, label)()
 }
 
 func Debugf(label string, args ...interface{}) Entry {
