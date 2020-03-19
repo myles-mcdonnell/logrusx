@@ -77,27 +77,27 @@ type (
 )
 
 func Infof(label string, args ...interface{}) Entry {
-	return entryFactory.MakeEntry(INFO, fmt.Sprintf(label, args...))()
+	return entryFactory.MakeEntry(INFO, fmt.Sprintf(label, args...))().WithField("Level", "INFO")
 }
 
 func Info(label string) Entry {
-	return entryFactory.MakeEntry(INFO, label)()
+	return entryFactory.MakeEntry(INFO, label)().WithField("Level", "INFO")
 }
 
 func Debugf(label string, args ...interface{}) Entry {
-	return entryFactory.MakeEntry(DEBUG, fmt.Sprintf(label, args...))()
+	return entryFactory.MakeEntry(DEBUG, fmt.Sprintf(label, args...))().WithField("Level", "DEBUG")
 }
 
 func Debug(label string) Entry {
-	return entryFactory.MakeEntry(DEBUG, label)()
+	return entryFactory.MakeEntry(DEBUG, label)().WithField("Level", "DEBUG")
 }
 
 func Errorf(label string, args ...interface{}) Entry {
-	return entryFactory.MakeEntry(ERROR, fmt.Sprintf(label, args...))()
+	return entryFactory.MakeEntry(ERROR, fmt.Sprintf(label, args...))().WithField("Level", "ERROR")
 }
 
 func Error(label string) Entry {
-	return entryFactory.MakeEntry(ERROR, label)()
+	return entryFactory.MakeEntry(ERROR, label)().WithField("Level", "ERROR")
 }
 
 func Init(level Level, out io.Writer, formatter log.Formatter, factory LogEntryFactory) {
